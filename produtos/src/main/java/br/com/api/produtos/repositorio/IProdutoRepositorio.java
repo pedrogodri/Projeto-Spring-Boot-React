@@ -1,5 +1,11 @@
 package br.com.api.produtos.repositorio;
 
-public interface IProdutoRepositorio {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import br.com.api.produtos.modelo.ProdutoModelo;
+
+@Repository
+public interface IProdutoRepositorio extends CrudRepository<ProdutoModelo, Long> {
     
 }
