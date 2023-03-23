@@ -1,8 +1,15 @@
 package br.com.api.produtos.modelo;
 
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Component
+@Getter
+@Setter
 public class RespostaModelo {
 
-    public void setMensagem(String string) {
-    }
+    private String mensagem;
     
 }
