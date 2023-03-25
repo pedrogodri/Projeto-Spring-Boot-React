@@ -5,6 +5,13 @@ import Tabela from './Tabela';
 
 function App() {
 
+  // Pbjeto produto
+  const produto = {
+    codigo : 0,
+    nome : '',
+    marca : ''
+  }
+
   // UseState
   const [btnCadastrar, setBtnCadastrar] = useState(true);
   const [produtos, setProdutos] = useState([]);
