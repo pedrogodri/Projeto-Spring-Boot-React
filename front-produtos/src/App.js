@@ -51,6 +51,44 @@ function App() {
     });
   }
 
+  // Alterar produto
+  const alterar = () => {
+    fetch('http://localhost:8080/alterar', {
+      method: 'put',
+      body: JSON.stringify(objProduto),
+      headers: {
+        'Content-type':'application/json',
+        'Accept':'application/json'
+      }
+    })
+    .then(retorno => retorno.json())
+    .then(retornoConvertido => {
+      if(retornoConvertido.mensagem !== undefined) {
+        alert(retornoConvertido.mensagem);
+      } else {
+        // Mensagem
+        alert("Produto alterado com sucesso");
+
+        //Cópia do vetor de produtos
+        let vetorTemp = [...produtos];
+      
+        /// Indice
+        let i = vetorTemp.findIndex((produto) => {
+          return produto.codigo === objProduto.codigo;
+        });
+
+        // Alterar produto do vetorTemp
+        vetorTemp[i] = objProduto;
+
+        // Atualizar o vetor de produtos
+        setProdutos(vetorTemp);
+
+        // Limpar formulário
+        limparFormulario();
+      }
+    });
+  }
+
   // Remover produto
   const remover = () => {
     fetch(`http://localhost:8080/remover/${objProduto.codigo}`, {
@@ -107,6 +145,7 @@ function App() {
         cadastrar={cadastrar} 
         obj={objProduto} cancelar={limparFormulario}
         remover={remover}
+        alterar={alterar}
       />
       <Tabela 
         vetor={produtos} 
