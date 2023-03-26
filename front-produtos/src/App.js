@@ -41,7 +41,12 @@ function App() {
     })
     .then(retorno => retorno.json())
     .then(retornoConvertido => {
-      console.log(retornoConvertido);
+      if(retornoConvertido.mensagem !== undefined) {
+        alert(retornoConvertido.mensagem)
+      } else {
+        setProdutos([...produtos, retornoConvertido]);
+        alert("Produto cadastrado com sucesso");
+      }
     })
   }
 
